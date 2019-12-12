@@ -1,0 +1,10 @@
+#!/bin/sh
+echo "file attribute adjusting for  ViaRhine.kext"
+sudo chown -R root:wheel ViaRhine.kext
+sudo find ViaRhine.kext -type d -exec chmod 0755 {} \;
+sudo find ViaRhine.kext -type f -exec chmod 0644 {} \; 
+
+sudo kextload ViaRhine.kext
+
+echo "restore file attributes..."
+sudo chown -R `whoami` ViaRhine.kext
